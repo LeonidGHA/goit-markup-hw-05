@@ -8,13 +8,14 @@
 
 :root {
 	--primary-text-color: #757575;
-	--title-tex-color: #212121;
+	--title-text-color: #212121;
 	--logo-text-color: #000000;
 	--accent-color: #2196f3;
 	--primary-bcg-color: #ffffff;
 	--secondary-bcg-color: #2f303a;
 	--tertiary-bck-color: #f5f4fa;
 	--icon-fill-color: #afb1b8;
+	--overlay-bgc-color: rgba(33, 150, 243, 0.9);
 }
 
 body {
@@ -69,12 +70,21 @@ ul {
 	margin-top: 0;
 	margin-bottom: 50px;
 
-	color: var(--title-tex-color);
+	color: var(--title-text-color);
 	font-size: 36px;
 	line-height: 1.16;
 	text-align: center;
 }
 
+.subtitle {
+	font-size: 14px;
+	line-height: 1.14;
+	text-transform: uppercase;
+}
+
+.text {
+	line-height: 1.71;
+}
 /* Container */
 
 .container {
@@ -125,7 +135,11 @@ ul {
 	margin-left: 93px;
 }
 
-.site-nav .item:not(:last-child) {
+.site-item {
+	position: relative;
+}
+
+.site-item:not(:last-child) {
 	margin-right: 50px;
 }
 
@@ -150,6 +164,19 @@ ul {
 	color: var(--accent-color);
 }
 
+.current::after {
+	display: block;
+	content: "";
+
+	position: absolute;
+	bottom: 0;
+
+	width: 100%;
+	height: 4px;
+	background-color: var(--accent-color);
+	border-radius: 2px;
+}
+
 /* Contacts */
 
 .contact-header {
@@ -157,7 +184,7 @@ ul {
 	margin-left: auto;
 }
 
-.contact-header .item:not(:last-child) {
+.contact-item:not(:last-child) {
 	margin-right: 50px;
 }
 
@@ -280,19 +307,23 @@ ul {
 .advantage-list .subtitle {
 	margin-bottom: 10px;
 
-	color: var(--title-tex-color);
-	font-size: 14px;
-	line-height: 1.14;
-	text-transform: uppercase;
+	color: var(--title-text-color);
 }
 
-.advantage-list .text {
-	line-height: 1.71;
-}
 /* Услуги */
 
 .service-list {
 	display: flex;
+}
+
+.service-item {
+	position: relative;
+
+	margin-right: 30px;
+}
+
+.service-item:last-child {
+	margin-right: 0;
 }
 
 .service-image {
@@ -301,13 +332,20 @@ ul {
 	height: auto;
 }
 
-.service-item {
-	margin-right: 30px;
+.service-name {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 70px;
+	width: 100%;
+
+	padding: 27px 10px;
+
+	text-align: center;
+	color: var(--primary-bcg-color);
+	background-color: rgba(47, 48, 58, 0.8);
 }
 
-.service-item:last-child {
-	margin-right: 0;
-}
 /* Наша Команда */
 
 .team {
@@ -342,7 +380,7 @@ ul {
 }
 
 .team-title {
-	color: var(--title-tex-color);
+	color: var(--title-text-color);
 	font-weight: 500;
 	font-size: 16px;
 	line-height: 1.18;
@@ -522,7 +560,7 @@ ul {
 
 /* Filters */
 .filters-title {
-	color: var(--title-tex-color);
+	color: var(--title-text-color);
 	font-weight: 900;
 	font-size: 44px;
 	line-height: 1.36;
@@ -552,7 +590,7 @@ ul {
 	padding: 6px 22px;
 	border-radius: 4px;
 
-	color: var(--title-tex-color);
+	color: var(--title-text-color);
 	background-color: var(--tertiary-bck-color);
 	font-weight: 500;
 	font-size: 16px;
@@ -570,7 +608,7 @@ ul {
 	box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
 }
 
-.filters-btn.current {
+.filters-btn.current-btn {
 	color: var(--primary-bcg-color);
 	background-color: var(--accent-color);
 }
@@ -599,12 +637,9 @@ ul {
 	margin-bottom: 0;
 }
 
-.project-item {
-	padding: 20px 24px;
-	border-bottom: 1px solid #eeeeee;
-	border-left: 1px solid #eeeeee;
-	border-right: 1px solid #eeeeee;
-	/* outline: 4px solid blueviolet; */
+.card-actions {
+	position: relative;
+	display: block;
 }
 
 .card-image {
@@ -613,8 +648,36 @@ ul {
 	height: auto;
 }
 
+.card-information {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 63px 24px;
+	height: 100%;
+	width: 100%;
+
+	opacity: 0;
+
+	font-size: 18px;
+	line-height: 1.5;
+	letter-spacing: 0.03em;
+
+	color: #ffffff;
+	background-color: var(--overlay-bgc-color);
+	/* outline: 2px solid tomato; */
+}
+
+.project-item {
+	padding: 20px 24px;
+	border-bottom: 1px solid #eeeeee;
+	border-left: 1px solid #eeeeee;
+	border-right: 1px solid #eeeeee;
+	/* outline: 4px solid blueviolet; */
+}
+
 .project-title {
-	color: var(--title-tex-color);
+	color: var(--title-text-color);
 	font-size: 18px;
 	line-height: 2;
 	letter-spacing: 0.06em;
@@ -626,6 +689,10 @@ ul {
 	line-height: 1.88;
 }
 
+.project-link:hover .card-information,
+.project-link:focus .card-information {
+	opacity: 1;
+}
 .project-link:hover,
 .project-link:focus {
 	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
