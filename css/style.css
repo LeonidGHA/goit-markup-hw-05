@@ -153,6 +153,8 @@ ul {
 	font-weight: 500;
 	line-height: 1.14;
 	letter-spacing: 0.02em;
+
+	transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-nav .link:hover,
@@ -175,6 +177,8 @@ ul {
 	height: 4px;
 	background-color: var(--accent-color);
 	border-radius: 2px;
+
+	transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Contacts */
@@ -196,6 +200,8 @@ ul {
 	font-weight: 500;
 	line-height: 1.14;
 	letter-spacing: 0.02em;
+
+	transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contact-mail {
@@ -269,11 +275,75 @@ ul {
 	letter-spacing: 0.06em;
 
 	cursor: pointer;
+
+	transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button-studio:hover,
 .button-studio:focus {
 	background-color: #188ce8;
+}
+
+/* Backdrop */
+
+.backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.2);
+
+	opacity: 1;
+
+	transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop.is-hidden {
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+	transform: translate(-50%, -50%) scale(0);
+}
+
+.modal {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(1);
+
+	min-width: 528px;
+	min-height: 581px;
+
+	background-color: var(--primary-bcg-color);
+
+	transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-btn {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 30px;
+	height: 30px;
+
+	color: blueviolet;
+	background: #ffffff;
+	border-radius: 50%;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+
+	cursor: pointer;
+}
+
+.modal-btn-image {
+	fill: currentColor;
 }
 
 /* Преимущества */
@@ -413,6 +483,8 @@ ul {
 	color: var(--icon-fill-color);
 	background: var(--primary-bcg-color);
 	border-radius: 50%;
+
+	transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-icon {
@@ -444,6 +516,8 @@ ul {
 	color: var(--icon-fill-color);
 	border: 1px solid var(--icon-fill-color);
 	border-radius: 4px;
+
+	transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .clients-icon {
@@ -540,6 +614,8 @@ ul {
 	color: var(--primary-bcg-color);
 	background: rgba(255, 255, 255, 0.1);
 	border-radius: 50%;
+
+	transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-icon {
@@ -596,8 +672,11 @@ ul {
 	font-size: 16px;
 	line-height: 1.62;
 	text-align: center;
+
 	cursor: pointer;
 
+	transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+		box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 	/* outline: 4px solid blueviolet; */
 }
 
@@ -627,6 +706,8 @@ ul {
 
 .project-link {
 	width: 370px;
+
+	transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .project-card:nth-child(3n) {
@@ -640,6 +721,7 @@ ul {
 .card-actions {
 	position: relative;
 	display: block;
+	overflow: hidden;
 }
 
 .card-image {
@@ -650,14 +732,11 @@ ul {
 
 .card-information {
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	top: 0;
+	left: 0;
 	padding: 63px 24px;
 	height: 100%;
 	width: 100%;
-
-	opacity: 0;
 
 	font-size: 18px;
 	line-height: 1.5;
@@ -665,6 +744,9 @@ ul {
 
 	color: #ffffff;
 	background-color: var(--overlay-bgc-color);
+
+	transform: translateY(+100%);
+	transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 	/* outline: 2px solid tomato; */
 }
 
@@ -691,7 +773,7 @@ ul {
 
 .project-link:hover .card-information,
 .project-link:focus .card-information {
-	opacity: 1;
+	transform: translateY(0);
 }
 .project-link:hover,
 .project-link:focus {
